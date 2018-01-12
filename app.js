@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const config = require('config');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -15,7 +17,9 @@ const slack = require('node-slack');
 // const slashCommand = slack.slashCommand;
 
 slack.config = {
-
+  clientID: config.get('SLACK_APP_CLIENT_ID'),
+  clientSecret: config.get('SLACK_APP_CLIENT_SECRET'),
+  verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN')
 };
 
 // slashCommand.add(require('./slash-commands/hello'));

@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 const request = Promise.promisify(require('request'));
-Promise.promisifyAll(request);
+Promise.promisifyAll(request, {multiArgs: true});
 
 const _sendRemote = (url, data) => {
   return request.postAsync(url, {json: data}).spread((response, body) => {

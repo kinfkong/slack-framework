@@ -24,6 +24,7 @@ slack.config = {
 
 
 slashCommand.add(require('./slash-commands/hello'));
+slashCommand.add(require('./slash-commands/delay'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

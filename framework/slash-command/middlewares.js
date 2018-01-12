@@ -1,12 +1,14 @@
 const wrapper = require('../common/utils').asyncWrapper;
 const Res = require('./res');
+const _ = require('lodash');
 
 const safeGuard = (req, slashCommand) => {
 
 };
 
 const parseReq = async (req, slashCommand) => {
-
+  const slashReq = _.extend({}, req.body);
+  return slashReq;
 };
 
 module.exports = (slashCommand) => {

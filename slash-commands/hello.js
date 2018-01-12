@@ -1,12 +1,11 @@
 const slack = require('node-slack');
 const slashCommand = slack.slashCommand;
 
-const command = new slashCommand.definition({
+const command = slashCommand.define({
   name: '/hello',
   handler: (req, res) => {
-    const response = slashCommand.response();
-    response.addText(`Hello World! Welcome ${req.user.name}!`);
-    res.send(response);
+    res.addText('Hello World!');
+    res.end();
   },
   helpText: 'balba'
 });

@@ -1,14 +1,13 @@
-const Response = require('./response');
 const _ = require('lodash');
 
-modole.exports = class SlashCommand {
+module.exports = class SlashCommand {
   constructor(slack) {
     this.slack = slack;
     this.middlewares = require('./middlewares')(this);
     this.commands = {};
   }
 
-  definition(obj) {
+  define(obj) {
     return _.extend({}, obj);
   }
 
@@ -16,8 +15,8 @@ modole.exports = class SlashCommand {
     this.commands[cmd.name] = cmd;
   }
 
-  response() {
-    return new Response();
+  get(commandName) {
+    return this.commands[commandName];
   }
 
 };

@@ -1,9 +1,9 @@
-// const SlashCommand = require('./slash-command');
+const SlashCommand = require('./slash-command');
 
 class Slack {
   constructor() {
     this.config = {};
-    // this.slashCommand = new SlashCommand(this);
+    this.slashCommand = new SlashCommand(this);
   }
 }
 

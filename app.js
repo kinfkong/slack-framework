@@ -14,7 +14,7 @@ var app = express();
 
 
 const slack = require('node-slack');
-// const slashCommand = slack.slashCommand;
+const slashCommand = slack.slashCommand;
 
 slack.config = {
   clientID: config.get('SLACK_APP_CLIENT_ID'),
@@ -22,7 +22,8 @@ slack.config = {
   verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN')
 };
 
-// slashCommand.add(require('./slash-commands/hello'));
+
+slashCommand.add(require('./slash-commands/hello'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-// app.use('/commands', slashCommand.middlewares);
+
+app.use('/commands', slashCommand.middlewares);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

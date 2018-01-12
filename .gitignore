@@ -1,0 +1,9 @@
+# Text File
+#
+# $id: .gitignore,v 1.0.0 2018/01/10 11:49:47 TCSASSEMBLER Exp $
+# Copyright (C) 2018 TopCoder Inc, 2013
+#
+# Last Modified: 2018/01/12 15:35:29
+
+/.idea
+/node_modules

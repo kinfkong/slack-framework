@@ -9,9 +9,9 @@ module.exports = class SlashCommand {
 
   define(obj) {
     const cmd =  _.extend({}, obj);
-    if (!cmd.helpHandler) {
+    if (!cmd.helpHandler && cmd.helpText) {
       cmd.helpHandler = (req, res, next) => {
-        res.addText('This is a help text.');
+        res.addText(helpText);
         res.end();
       }
     }

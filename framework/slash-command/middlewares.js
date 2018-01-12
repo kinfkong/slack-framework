@@ -27,13 +27,15 @@ module.exports = (slashCommand) => {
     const slashNext = null; // TODO
 
     // delegate to custom handler
-    cmd.handler(slashReq, slashRes, slashNext);
-
-
+    if (slashReq.text && slashReq.text.toLowerCase() === 'help') {
+      cmd.helpHandler(slashReq, slashRes, slashNext);
+    } else {
+      cmd.handler(slashReq, slashRes, slashNext);
+    }
     setTimeout(() => {
       if (!slashRes.sent) {
         slashRes._sendTempResponse();
       }
-    }, slashCommand.slack.slashCommandImmediateTimeoutLimit);
+    }, slashCommand.slack.slashCommandImmediateTimeoutLimit || 2000);
   });
 };

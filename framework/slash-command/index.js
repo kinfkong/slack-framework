@@ -8,7 +8,14 @@ module.exports = class SlashCommand {
   }
 
   define(obj) {
-    return _.extend({}, obj);
+    const cmd =  _.extend({}, obj);
+    if (!cmd.helpHandler) {
+      cmd.helpHandler = (req, res, next) => {
+        res.addText('This is a help text.');
+        res.end();
+      }
+    }
+    return cmd;
   }
 
   add(cmd) {

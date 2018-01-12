@@ -34,6 +34,6 @@ module.exports = (slashCommand) => {
       if (!slashRes.sent) {
         slashRes._sendTempResponse();
       }
-    }, 5000);
+    }, slashCommand.slack.slashCommandImmediateTimeoutLimit);
   });
 };

@@ -19,7 +19,9 @@ const slashCommand = slack.slashCommand;
 slack.config = {
   clientID: config.get('SLACK_APP_CLIENT_ID'),
   clientSecret: config.get('SLACK_APP_CLIENT_SECRET'),
-  verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN')
+  verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN'),
+
+  slashCommandImmediateTimeoutLimit: config.get('SLASH_COMMAND_IMMEDIATE_TIMEOUT_LIMIT')
 };
 
 

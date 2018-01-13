@@ -1,5 +1,5 @@
 const Base = require('./base');
-const Attachment = require('./Attachment');
+const Attachment = require('./attachment');
 const _ = require('lodash');
 
 module.exports = class Message extends Base {

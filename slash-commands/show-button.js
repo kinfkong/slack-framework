@@ -18,6 +18,7 @@ const action = actions.addAction({
 
 const command = commands.addCommand({
   name: '/show-button',
+
   handler: (req, res) => {
     const message = res.createMessage('This is a message!');
     const attachment = message.addAttachment('This is an attachment.');

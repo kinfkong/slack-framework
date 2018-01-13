@@ -9,7 +9,8 @@ const command = commands.addCommand({
       res.send(message);
     }, 15000);
   },
-  helpText: 'balba'
+  helpText: 'balba',
+  responseType: 'in_channel'
 });
 
 

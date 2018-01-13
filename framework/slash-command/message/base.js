@@ -15,6 +15,14 @@ module.exports = class Base {
     }
   }
 
+  extend(obj) {
+    this.obj = _.extend(this.obj, obj);
+  }
+
+  set(fieldName, fieldValue) {
+    this.obj[fieldName] = fieldValue;
+  }
+
   toObject() {
     return _.extend({}, this.obj);
   }

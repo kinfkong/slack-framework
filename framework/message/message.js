@@ -1,5 +1,7 @@
 const Base = require('./base');
 const Attachment = require('./attachment');
+const Image = require('./image');
+
 const _ = require('lodash');
 
 module.exports = class Message extends Base {
@@ -12,6 +14,12 @@ module.exports = class Message extends Base {
     const attachment = new Attachment(text);
     this.attachments.push(attachment);
     return attachment;
+  }
+
+  addImage(imageOptions) {
+    const image = new Image(imageOptions);
+    this.attachments.push(image);
+    return image;
   }
 
   toObject() {

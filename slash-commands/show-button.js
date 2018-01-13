@@ -9,8 +9,10 @@ const command = slashCommand.define({
 
     attachment.set('callback_id', 'test-buttons');
 
-    attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
-    attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
+    const button1 = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
+    const button2 = attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
+
+    button1.extend({style: 'danger'});
 
     res.send(message);
   },

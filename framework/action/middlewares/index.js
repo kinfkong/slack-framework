@@ -31,6 +31,9 @@ module.exports = (slack, type) => {
 
   return wrapper(async (req, res) => {
     // validate the request
+    if (type === 'action') {
+      req.body.payload = JSON.parse(req.body.payload);
+    }
     safeGuard(req.body, slack);
 
     let name = null;

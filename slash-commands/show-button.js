@@ -21,7 +21,7 @@ const menuAction = actions.addAction({
   handler: (req, res) => {
     const target = req.target;
     const message = res.createMessage();
-    if (target.selected_options[0] === 'option1') {
+    if (target.selected_options[0].value === 'option1') {
       message.addText('You are selecting option #1');
     } else {
       message.addText('You are selecting option #2');

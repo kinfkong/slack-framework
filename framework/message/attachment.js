@@ -4,8 +4,8 @@ const Button = require('./button');
 const Menu = require('./menu');
 
 module.exports = class Attachment extends Base {
-  constructor(text) {
-    super(text);
+  constructor(options) {
+    super(options);
     this.actions = [];
   }
 

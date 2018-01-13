@@ -3,8 +3,8 @@ const Attachment = require('./attachment');
 const _ = require('lodash');
 
 module.exports = class Message extends Base {
-  constructor(text) {
-    super(text);
+  constructor(options) {
+    super(options);
     this.attachments = [];
   }
 

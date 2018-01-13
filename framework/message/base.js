@@ -1,10 +1,14 @@
 const _ = require('lodash');
 
 module.exports = class Base {
-  constructor(text) {
-    this.obj = {
-      text: text
-    };
+  constructor(options) {
+    if (_.isObject(options)) {
+      this.obj = options;
+    } else {
+      this.obj = {
+        text: text
+      };
+    }
   }
 
   addText(text) {

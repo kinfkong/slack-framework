@@ -50,7 +50,7 @@ const command = commands.addCommand({
 
     const menuAttachment = message.addAttachment('This for menu.');
     menuAttachment.setAction(menuAction);
-    menuAttachment.addMenu({name: 'test-menu', text: 'which to select', selectOptions});
+    menuAttachment.addMenu({name: 'test-menu', text: 'which to select', options: selectOptions});
 
     res.send(message);
   },

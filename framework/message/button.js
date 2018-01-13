@@ -1,9 +1,8 @@
 const Action = require('./action');
+const _ = require('lodash');
 module.exports = class Button extends Action {
-  constructor({name, text, value}) {
-    super(text);
-    this.obj.name = name;
-    this.obj.value = value;
+  constructor(options) {
+    super(options);
     this.obj.type = 'button';
   }
 };

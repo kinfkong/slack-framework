@@ -6,8 +6,7 @@ const command = commands.addCommand({
   handler: (req, res, next) => {
     const message = res.createMessage('Hello World!');
     res.send(message);
-  },
-  helpText: 'balba'
+  }
 });
 
 

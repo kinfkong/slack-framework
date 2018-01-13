@@ -6,7 +6,7 @@ module.exports = class Base {
       this.obj = options;
     } else {
       this.obj = {
-        text: text
+        text: options
       };
     }
   }

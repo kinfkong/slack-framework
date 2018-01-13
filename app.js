@@ -14,7 +14,8 @@ var app = express();
 
 
 const slack = require('node-slack');
-const slashCommand = slack.slashCommand;
+const commands = slack.commands;
+const actions = slack.actions;
 
 slack.config = {
   clientID: config.get('SLACK_APP_CLIENT_ID'),
@@ -22,13 +23,11 @@ slack.config = {
   verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN'),
   oauthAccessToken: config.get('SLACK_APP_OAUTH_ACCESS_TOKEN'),
 
-  slashCommandImmediateTimeoutLimit: config.get('SLASH_COMMAND_IMMEDIATE_TIMEOUT_LIMIT')
+  immediateMessageTimeoutLimit: config.get('SLACK_APP_IMMEDIATE_MESSAGE_TIMEOUT_LIMIT')
 };
 
 
-slashCommand.add(require('./slash-commands/hello'));
-slashCommand.add(require('./slash-commands/delay'));
-slashCommand.add(require('./slash-commands/show-button'));
+require('./slash-commands');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.use('/commands', slashCommand.middlewares);
+app.use('/commands', commands.middlewares);
+app.use('/actions', actions.middlewares);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

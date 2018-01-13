@@ -1,7 +1,7 @@
 const slack = require('node-slack');
-const slashCommand = slack.slashCommand;
+const commands = slack.commands;
 
-const command = slashCommand.define({
+const command = commands.addCommand({
   name: '/delay',
   handler: (req, res, next) => {
     setTimeout(() => {

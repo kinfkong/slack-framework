@@ -1,8 +1,9 @@
 const Promise = require('bluebird');
 const request = Promise.promisify(require('request'));
+
 Promise.promisifyAll(request, {multiArgs: true});
 
-const Message = require('./message/message');
+const Message = require('../../message/message');
 
 const _sendRemote = (url, data) => {
   return request.postAsync(url, {json: data}).spread((response, body) => {
@@ -18,10 +19,6 @@ module.exports = class Res {
     this.sent = false;
     this.expressRes = res;
     this.responseURL = responseURL;
-  }
-
-  addText(text) {
-    this.response.text = text;
   }
 
   createMessage(text) {

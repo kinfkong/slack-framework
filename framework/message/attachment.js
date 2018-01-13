@@ -8,6 +8,10 @@ module.exports = class Attachment extends Base {
     this.actions = [];
   }
 
+  setAction(action) {
+    this.obj.callback_id = action.name;
+  }
+
   addButton(options) {
     const btn = new Button(options);
     this.actions.push(btn);

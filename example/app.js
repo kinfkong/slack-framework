@@ -13,7 +13,7 @@ var users = require('./routes/users');
 var app = express();
 
 
-const slack = require('node-slack');
+const slack = require('./slack-framework');
 const commands = slack.commands;
 const actions = slack.actions;
 

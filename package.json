@@ -1,20 +1,23 @@
 {
-  "name": "test",
-  "version": "0.0.0",
-  "private": true,
+  "name": "slack-framework",
+  "version": "1.0.0",
+  "description": "This is the wrappers for slack APIs (including Slash Command)",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "preinstall": "npm install ./framework"
+    "postinstall": "npm install ./example",
+    "start": "cd example && node ./bin/www"
   },
+  "files": [
+    "README.md",
+    "index.js",
+    "lib/"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "~1.17.1",
-    "config": "^1.29.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "node-slack": "file:framework",
-    "serve-favicon": "~2.4.2"
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "test": "file:example"
   }
 }

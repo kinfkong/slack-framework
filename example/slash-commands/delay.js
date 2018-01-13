@@ -1,4 +1,4 @@
-const slack = require('node-slack');
+const slack = require('../slack-framework');
 const commands = slack.commands;
 
 const command = commands.addCommand({

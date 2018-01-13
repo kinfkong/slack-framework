@@ -10,10 +10,17 @@ const safeGuard = (req, slack) => {
   }
 };
 
-const parseRequest = async (req, slack, action) => {
+const parseRequest = async (req, slack, action, type) => {
   const webAPI = slack.webAPI;
   const slackRequest = _.extend({}, req.body);
 
+  if (type === 'action') {
+    if (slackRequest.actions && slackRequest.actions.length > 0) {
+      slackRequest.target = slackRequest.actions[0];
+    } else {
+      slackRequest.target = null;
+    }
+  }
   if (action.scopes && action.scopes.contains('users.info')) {
     const userId = slackRequest.user_id || slackRequest.user.id;
     slackRequest.userInfo = await webAPI.getUserInfo(userId);

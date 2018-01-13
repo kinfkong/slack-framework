@@ -4,8 +4,9 @@ const Res = require('./res');
 const _ = require('lodash');
 
 const safeGuard = (req, slack) => {
-  if ((req.token || req.payload.token) !== slack.config.verificationToken) {
-    throw new Error(`Verification token is invalid ${req.body.token} ${slack.config.verificationToken}`);
+  const requestToken = req.token || req.payload.token;
+  if (requestToken !== slack.config.verificationToken) {
+    throw new Error(`Verification token is invalid ${requestToken} ${slack.config.verificationToken}`);
   }
 };
 
@@ -30,7 +31,7 @@ module.exports = (slack, type) => {
 
   return wrapper(async (req, res) => {
     // validate the request
-    safeGuard(req, slack);
+    safeGuard(req.body, slack);
 
     let name = null;
     let actions = null;

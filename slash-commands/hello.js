@@ -3,7 +3,7 @@ const commands = slack.commands;
 
 const command = commands.addCommand({
   name: '/hello',
-  handler: (req, res, next) => {
+  handler: (req, res) => {
     const message = res.createMessage('Hello World!');
     res.send(message);
   }

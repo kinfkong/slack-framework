@@ -16,6 +16,20 @@ const action = actions.addAction({
   }
 });
 
+const menuAction = actions.addAction({
+  name: 'test-menus',
+  handler: (req, res) => {
+    const target = req.target;
+    const message = res.createMessage();
+    if (target.selectedOptions[0] === 'option1') {
+      message.addText('You are selecting option #1');
+    } else {
+      message.addText('You are selecting option #2');
+    }
+    res.send(message);
+  }
+});
+
 const command = commands.addCommand({
   name: '/show-button',
 
@@ -27,8 +41,16 @@ const command = commands.addCommand({
 
     const button1 = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
     const button2 = attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
-
     button1.extend({style: 'danger'});
+
+    const selectOptions = [
+      {text: 'option #1', value: 'option1'},
+      {text: 'option #2', value: 'option2'}
+    ];
+
+    const menuAttachment = message.addAttachment('This for menu.');
+    menuAttachment.setAction(menuAction);
+    attachment.addMenu({name: 'test-menu', text: 'which to select', selectOptions});
 
     res.send(message);
   },

@@ -11,6 +11,7 @@ module.exports = class Attachment extends Base {
   addButton(options) {
     const btn = new Button(options);
     this.actions.push(btn);
+    return btn;
   }
 
   toObject() {

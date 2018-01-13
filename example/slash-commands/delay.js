@@ -3,7 +3,7 @@ const commands = slack.commands;
 
 const command = commands.addCommand({
   name: '/delay',
-  handler: (req, res, next) => {
+  handler: (req, res) => {
     setTimeout(() => {
       const message = res.createMessage('this is a delay message!');
       res.send(message);

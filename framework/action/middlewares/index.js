@@ -12,7 +12,7 @@ const safeGuard = (req, slack) => {
 
 const parseRequest = async (req, slack, action, type) => {
   const webAPI = slack.webAPI;
-  const slackRequest = _.extend({}, req.body);
+  const slackRequest = _.extend({}, type === 'command' ? req : req.payload);
 
   if (type === 'action') {
     if (slackRequest.actions && slackRequest.actions.length > 0) {

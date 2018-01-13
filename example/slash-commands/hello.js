@@ -4,7 +4,7 @@ const commands = slack.commands;
 const command = commands.addCommand({
   name: '/hello',
   handler: (req, res) => {
-    const message = res.createMessage('Hello World!');
+    const message = res.createMessage(`Hello World! Are you admin? ${req.userInfo.is_admin ? 'Yes' : 'No'}`);
     message.addImage({
       title: 'sample image',
       text: 'this is the sample image',
@@ -12,7 +12,8 @@ const command = commands.addCommand({
       thumb_url: 'https://c1.staticflickr.com/7/6159/6207023756_bbca3b9025_m.jpg'
     });
     res.send(message);
-  }
+  },
+  scopes: ['users:read']
 });
 
 

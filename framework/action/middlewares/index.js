@@ -4,8 +4,7 @@ const Res = require('./res');
 const _ = require('lodash');
 
 const safeGuard = (req, slack) => {
-  console.log(req.body);
-  if (req.body.token !== slack.config.verificationToken) {
+  if ((req.token || req.payload.token) !== slack.config.verificationToken) {
     throw new Error(`Verification token is invalid ${req.body.token} ${slack.config.verificationToken}`);
   }
 };
@@ -39,7 +38,7 @@ module.exports = (slack, type) => {
       name = req.body.command;
       actions = slack.commands;
     } else {
-      name = req.body.callback_id;
+      name = req.body.payload.callback_id;
       actions = slack.actions;
     }
 
@@ -49,7 +48,7 @@ module.exports = (slack, type) => {
       throw new Error(`cannot get the command ${name}`);
     }
 
-    const slackRequest = await parseRequest(req, slack, action, type);
+    const slackRequest = await parseRequest(req.body, slack, action, type);
     const slackResponse = new Res(req.body.response_url, res);
 
     // delegate to custom handler

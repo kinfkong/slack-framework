@@ -1,4 +1,4 @@
-const Base = require('./Base');
+const Base = require('./base');
 module.exports = class Attachment extends Base {
   constructor(text) {
     super(text);

@@ -20,6 +20,7 @@ slack.config = {
   clientID: config.get('SLACK_APP_CLIENT_ID'),
   clientSecret: config.get('SLACK_APP_CLIENT_SECRET'),
   verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN'),
+  oauthAccessToken: config.get('SLACK_APP_OAUTH_ACCESS_TOKEN'),
 
   slashCommandImmediateTimeoutLimit: config.get('SLASH_COMMAND_IMMEDIATE_TIMEOUT_LIMIT')
 };
@@ -27,6 +28,7 @@ slack.config = {
 
 slashCommand.add(require('./slash-commands/hello'));
 slashCommand.add(require('./slash-commands/delay'));
+slashCommand.add(require('./slash-commands/show-button'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

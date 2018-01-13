@@ -3,10 +3,10 @@ const slashCommand = slack.slashCommand;
 
 const command = slashCommand.define({
   name: '/delay',
-  handler: (req, res) => {
+  handler: (req, res, next) => {
     setTimeout(() => {
-      res.addText('this is a delay message!');
-      res.end();
+      const message = res.createMessage('this is a delay message!');
+      res.send(message);
     }, 15000);
   },
   helpText: 'balba'

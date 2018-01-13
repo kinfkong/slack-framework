@@ -2,6 +2,8 @@ const Promise = require('bluebird');
 const request = Promise.promisify(require('request'));
 Promise.promisifyAll(request, {multiArgs: true});
 
+const Message = require('./message/message');
+
 const _sendRemote = (url, data) => {
   return request.postAsync(url, {json: data}).spread((response, body) => {
     if (response.statusCode !== 200) {
@@ -16,21 +18,24 @@ module.exports = class Res {
     this.sent = false;
     this.expressRes = res;
     this.responseURL = responseURL;
-    this.response = {};
   }
 
   addText(text) {
     this.response.text = text;
   }
 
-  end() {
+  createMessage(text) {
+    return new Message(text);
+  }
+
+  send(message) {
     this.sent = true;
     if (this.isDelay) {
       // send to the response url
-      return _sendRemote(this.responseURL, this.response);
+      return _sendRemote(this.responseURL, message.toObject());
     } else {
       // send the response
-      this.expressRes.json(this.response);
+      this.expressRes.json(message.toObject());
     }
   }
 

@@ -22,7 +22,7 @@ const command = commands.addCommand({
     const message = res.createMessage('This is a message!');
     const attachment = message.addAttachment('This is an attachment.');
 
-    attachment.actionHandler = action;
+    attachment.setAction(action);
 
     const button1 = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
     const button2 = attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});

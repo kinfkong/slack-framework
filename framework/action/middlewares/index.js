@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 const safeGuard = (req, slack) => {
   if (req.body.token !== slack.config.verificationToken) {
-    throw new Error('Verification token is invalid');
+    throw new Error(`Verification token is invalid ${req.body.token} ${slack.config.verificationToken}`);
   }
 };
 

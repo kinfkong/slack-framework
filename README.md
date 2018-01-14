@@ -239,15 +239,40 @@ const menu = attachment.addMenu({
   }]
 });
 ```
-### hacking
+### message format hacking
 for all the entities (message,attachment, button, menu, image, etc), there is a method named: `assignIn`.
 You can use it to set the properties that the framework currently not exposing the api. 
 ```js
-// set the style of the button
+// for example, set the style of the button
 button.assignIn({style: 'danger'});
 ```
 
-## Example
+## Example Project
 
+NOTE: all the following commands should be run in the root folder of the submission, NOT in the `example` folder.
 
-## Template
+### run locally
+```bash
+export SLACK_APP_CLIENT_ID='****'
+export SLACK_APP_CLIENT_SECRET='*****',
+export SLACK_APP_VERIFICATION_TOKEN='*****'
+export SLACK_APP_OAUTH_ACCESS_TOKEN='******' 
+
+npm start
+```
+
+### deploy to heroku
+```bash
+
+heroku login
+heroku create
+
+heroku config:set SLACK_APP_CLIENT_ID='****'
+heroku config:set SLACK_APP_CLIENT_SECRET='*****',
+heroku config:set SLACK_APP_VERIFICATION_TOKEN='*****'
+heroku config:set SLACK_APP_OAUTH_ACCESS_TOKEN='******'
+
+git push -u heroku master
+```
+
+## Template Project

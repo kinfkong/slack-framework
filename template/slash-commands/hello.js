@@ -57,11 +57,13 @@ const command = commands.addCommand({
   // You should use either helpText or helpHandler.
   // if helpText and helpHandler is not set, the help action will not be functioned.
   // Note: the property will be ignored if helpHandler is also set.
+  // help action message is always 'ephemeral'
   helpText: 'This command is a hello world demo.',
 
   // optional. this handler let's you to define a more complicated help message to replace helpText.
   // You should use either helpText or helpHandler.
   // if helpText and helpHandler is not set, the help action will not be functioned.
+  // // help action message is always 'ephemeral'
   helpHandler: (req, res) => {
     const message = res.createMessage('Thanks for using /hello command.');
     message.addText('This is just a demo');

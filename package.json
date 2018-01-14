@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "This is the wrappers for slack APIs (including Slash Command)",
   "main": "index.js",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
-    "postinstall": "npm install ./example",
-    "start": "cd example && node ./bin/www"
+    "start": "cd example && node ./bin/www",
+    "postinstall": "npm install ./example --no-save",
+    "lint": "eslint . --ignore-pattern '**/node_modules/**' --ext .js || true"
   },
   "files": [
     "README.md",
@@ -17,7 +21,10 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "lodash": "^4.17.4",
-    "request": "^2.83.0",
-    "test": "file:example"
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-topcoder": "^2.0.0"
   }
 }

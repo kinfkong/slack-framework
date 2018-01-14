@@ -1,4 +1,5 @@
 const slack = require('../slack-framework');
+
 const commands = slack.commands;
 
 const command = commands.addCommand({
@@ -7,10 +8,10 @@ const command = commands.addCommand({
     setTimeout(() => {
       const message = res.createMessage('this is a delay message!');
       res.send(message);
-    }, 15000);
+    }, 15000); // eslint-disable-line no-magic-numbers
   },
   helpText: 'balba',
-  responseType: 'in_channel'
+  responseType: 'in_channel',
 });
 
 

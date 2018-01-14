@@ -1,4 +1,5 @@
 const slack = require('../slack-framework');
+
 const commands = slack.commands;
 const actions = slack.actions;
 
@@ -13,7 +14,7 @@ const action = actions.addAction({
       message.addText('You are clicking button #2');
     }
     res.send(message);
-  }
+  },
 });
 
 const menuAction = actions.addAction({
@@ -27,7 +28,7 @@ const menuAction = actions.addAction({
       message.addText('You are selecting option #2');
     }
     res.send(message);
-  }
+  },
 });
 
 const command = commands.addCommand({
@@ -40,12 +41,12 @@ const command = commands.addCommand({
     attachment.setAction(action);
 
     const button1 = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
-    const button2 = attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
-    button1.extend({style: 'danger'});
+    attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
+    button1.assignIn({style: 'danger'});
 
     const selectOptions = [
       {text: 'option #1', value: 'option1'},
-      {text: 'option #2', value: 'option2'}
+      {text: 'option #2', value: 'option2'},
     ];
 
     const menuAttachment = message.addAttachment('This for menu.');
@@ -54,8 +55,7 @@ const command = commands.addCommand({
 
     res.send(message);
   },
-  helpText: 'balba'
+  helpText: 'balba',
 });
-
 
 module.exports = command;

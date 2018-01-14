@@ -1,16 +1,14 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const config = require('config');
+const morganLogger = require('morgan');
 
-var app = express();
-
-
+const logger = require('./common/logger');
 const slack = require('./slack-framework');
+
+const app = express();
+
 const commands = slack.commands;
 const actions = slack.actions;
 
@@ -19,35 +17,34 @@ slack.config = {
   clientSecret: config.get('SLACK_APP_CLIENT_SECRET'),
   verificationToken: config.get('SLACK_APP_VERIFICATION_TOKEN'),
   oauthAccessToken: config.get('SLACK_APP_OAUTH_ACCESS_TOKEN'),
-
-  immediateMessageTimeoutLimit: config.get('SLACK_APP_IMMEDIATE_MESSAGE_TIMEOUT_LIMIT')
+  immediateMessageTimeoutLimit: config.get('SLACK_APP_IMMEDIATE_MESSAGE_TIMEOUT_LIMIT'),
 };
 
 require('./slash-commands');
 
-app.use(logger('dev'));
+app.use(morganLogger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/commands', commands.middlewares);
 app.use('/actions', actions.middlewares);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  console.error(err);
+app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  logger.logFullError(err, 'ErrorHandler');
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || 500); // eslint-disable-line no-magic-numbers
   res.json({
     message: err.message,
-    error: req.app.get('env') === 'development' ? err : {}
+    error: req.app.get('env') === 'development' ? err : {},
   });
 });
 

@@ -47,7 +47,7 @@ app.use('/actions', actions.middlewares); // to handle the button/menu actions
 ```
 #### Slack's configuration options
 | Name                           | Description                                | Default                          |
-| :----------------------------- | :----------------------------------------: | :------------------------------: |
+| :----------------------------- | :----------------------------------------  | :------------------------------: |
 | clientID                       | the slack app's client ID    |  None                            |
 | clientSecret                   | the slack app's client secret                           |  None                            |
 | verificationToken              | the slack app's verification token                             |  None                            |

@@ -44,7 +44,7 @@ const action = actions.addAction({
     }
     res.send(message);
   },
-  
+
   // optional, if scope 'users:read' is set, it will get the userInfo via slack API.
   scopes: ['users:read'],
 

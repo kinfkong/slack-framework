@@ -55,6 +55,14 @@ app.use('/actions', actions.middlewares); // to handle the button/menu actions
 | immediateMessageTimeoutLimit   | the timeout for immediate message. If the process time is longer than this value, it will send a delay message              |  2000                            |
 | logLevel                       | the log level for the framework lib | info |
 
+
+__How to find the clientID, clientSecret, verificationToken, oauthAccessToken?__
+* in this page [https://api.slack.com/apps](https://api.slack.com/apps) select and click the app.
+* in the left panel, click: `Settings - Basic Information`, you can find the 'Client ID', 'Client Secret' and 'Verification Token'.
+* (__important!__) click: `Features - OAuth & Permissions`, in the `Scopes` section, add permission scope: `users:read` 
+* click button `Install App to workspace`, you can see the `OAuth Access Token`
+
+
 ### Define a Slash Command
 
 ```js

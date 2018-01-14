@@ -66,7 +66,7 @@ const command = commands.addCommand({
   // // help action message is always 'ephemeral'
   helpHandler: (req, res) => {
     const message = res.createMessage('Thanks for using /hello command.');
-    message.addText('This is just a demo');
+    message.addText('This is the help page for this command.');
     res.send(message);
   },
 

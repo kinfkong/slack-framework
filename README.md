@@ -294,7 +294,7 @@ git push -u heroku master
 * in this page [https://api.slack.com/apps](https://api.slack.com/apps) select and click the app.
 * in the left panel, click `Features - Slash Command`, click `Create New Command`.
 * in the form, `Request URL`, fill: `https://<YOUR_HOST>/commands`
-* in the left panel, click `Features - Interactive Components`, `Request URL` fill: `https://<YOUR_HOST/actions`
+* (**imporant!**)in the left panel, click `Features - Interactive Components`, `Request URL` fill: `https://<YOUR_HOST/actions`
 
 
 ## Template Project

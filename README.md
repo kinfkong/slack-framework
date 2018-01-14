@@ -204,7 +204,13 @@ const image = message.addImage({
       thumb_url: 'https://c1.staticflickr.com/7/6159/6207023756_bbca3b9025_m.jpg',
 });
 
-const otherAttachment = message.addAttachment('this is an attachment');
+const attachment = message.addAttachment('this is an attachment');
+// or 
+const otherAttachment = message.addAttachment({
+  title: "Synopsis",
+  text: "After @episod pushed exciting changes to a devious new branch back in Issue 1, Slackbot notifies @don about an unexpected deploy..."
+  // other options ...
+});
 
 ```
 
@@ -234,7 +240,12 @@ const menu = attachment.addMenu({
 });
 ```
 ### hacking
-
+for all the entities (message,attachment, button, menu, image, etc), there is a method named: `assignIn`.
+You can use it to set the properties that the framework currently not exposing the api. 
+```js
+// set the style of the button
+button.assignIn({style: 'danger'});
+```
 
 ## Example
 

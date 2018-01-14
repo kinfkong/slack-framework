@@ -48,11 +48,11 @@ app.use('/actions', actions.middlewares); // to handle the button/menu actions
 #### Slack's configuration options
 | Name                           | Description                                | Default                          |
 | :----------------------------- | :----------------------------------------: | :------------------------------: |
-| clientID                       | the port the application will listen on    |  None                            |
-| clientSecret                   | the API version                            |  None                            |
-| verificationToken              | the log level                              |  None                            |
-| oauthAccessToken               | the MongoDB URI                            |  None                            |
-| immediateMessageTimeoutLimit   | the password hash salt length              |  2000                            |
+| clientID                       | the slack app's client ID    |  None                            |
+| clientSecret                   | the slack app's client secret                           |  None                            |
+| verificationToken              | the slack app's verification token                             |  None                            |
+| oauthAccessToken               | the slack app's oauth access token                            |  None                            |
+| immediateMessageTimeoutLimit   | the timeout for immediate message. If the process time is longer than this value, it will send a delay message              |  2000                            |
 
 
 ### Define a Slash Command

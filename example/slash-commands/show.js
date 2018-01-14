@@ -3,7 +3,7 @@
  */
 
 /**
- * This module is showing the demo 'Hello World' command for showing how to use a button and button action handler.
+ * This module is showing the demo for showing the button, menu, image, user role, etc.
  *
  * @author TCSCODER
  * @version 1.0
@@ -94,7 +94,7 @@ const imageHandler = (req, res) => {
 };
 
 const roleHandler = (req, res) => {
-  const message = res.createMessage(`Here is role information`);
+  const message = res.createMessage(`Here is role information for ${req.user_name}: `);
   message.addAttachment({
     fields: [{
       title: 'ADMIN',

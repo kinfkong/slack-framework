@@ -155,7 +155,7 @@ const action = actions.addAction({
   
   // handles the action
   handler: (req, res) => {
-    // the button/menu that clicked
+    // the button/menu option that clicked
     const target = req.target;
     
     // create the message
@@ -282,5 +282,19 @@ heroku config:set SLACK_APP_OAUTH_ACCESS_TOKEN='******'
 
 git push -u heroku master
 ```
+
+### config the following commands in slack app:
+
+* /hello - _a hello world demo_
+* /hello-with-button - _a hello world demo with showing buttons_
+* /show - _shows button, image, menu or user role_
+* /delay - _demo for a delay message_
+
+**How to config the slash commands?**
+* in this page [https://api.slack.com/apps](https://api.slack.com/apps) select and click the app.
+* in the left panel, click `Features - Slash Command`, click `Create New Command`.
+* in the form, `Request URL`, fill: `https://<YOUR_HOST>/commands`
+* in the left panel, click `Features - Interactive Components`, `Request URL` fill: `https://<YOUR_HOST/actions`
+
 
 ## Template Project

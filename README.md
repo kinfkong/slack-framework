@@ -71,6 +71,13 @@ const command = commands.addCommand({
     const message = res.createMessage(`This is a hello world message!`);
     res.send(message);
   }
+  
+  /* more optional properties like: */
+  
+  // helpHandler: (req, res) => {},
+  // helpText: 'The is a help message',
+  // scopes: ['users: read'],
+  // responseType: 'in_channel' or 'ephemeral',
 });
 
 module.exports = command;

@@ -76,10 +76,22 @@ const command = commands.addCommand({
   
   // helpHandler: (req, res) => {},
   // helpText: 'The is a help message',
-  // scopes: ['users: read'],
+  // scopes: ['users:read'],
   // responseType: 'in_channel' or 'ephemeral',
 });
 
 module.exports = command;
 
 ```
+
+#### Slash Command properties
+|Property|type| Description|Required| 
+|:-------|:---:|:-----------|:---:|
+|name|String|the name of the command, should include '/'|required| 
+|handler|Function|the handler of the command|required|
+|helpText|String|the text will display if typing `/<command-name> help`|optional|
+|helpHandler|Function|instead of using `helpText`, helpHanlder can implement a complicated help message|optional|
+|scopes|Array|currently supports: `['users:read']` only, if this scope is set, if will retrieve the `userInfo`|optional|
+|responseType|String| `in_channel` or `ephemeral`|optional, default: `ephemeral`|
+ 
+ 

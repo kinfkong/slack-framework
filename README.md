@@ -24,7 +24,7 @@ npm run lint
 ```js
 const slack = require('slack-framework');
 
-// set the configs
+// set the configurations
 slack.set('clientID', '***' /* Your slack app's client ID */);
 slack.set('clientSecret', '***' /* Your slack app's client secret */);
 slack.set('verificationToken', '***' /* Your slack app's verification token */);
@@ -43,5 +43,36 @@ app.use(bodyParser.urlencoded({extended: false}));
 // set the express middlewares
 app.use('/commands', commands.middlewares); // to handle the slash commands
 app.use('/actions', actions.middlewares); // to handle the button/menu actions
+
+```
+#### Slack's configuration options
+| Name                           | Description                                | Default                          |
+| :----------------------------- | :----------------------------------------: | :------------------------------: |
+| clientID                       | the port the application will listen on    |  None                            |
+| clientSecret                   | the API version                            |  None                            |
+| verificationToken              | the log level                              |  None                            |
+| oauthAccessToken               | the MongoDB URI                            |  None                            |
+| immediateMessageTimeoutLimit   | the password hash salt length              |  2000                            |
+
+
+### Define a Slash Command
+
+```js
+const slack = require('slack-framework');
+
+const commands = slack.commands;
+
+const command = commands.addCommand({
+  // the name of the command
+  name: '/hello',
+  
+  // the command handler 
+  handler: (req, res) => {
+    const message = res.createMessage(`This is a hello world message!`);
+    res.send(message);
+  }
+});
+
+module.exports = command;
 
 ```

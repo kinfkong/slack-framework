@@ -16,13 +16,24 @@ const commands = slack.commands;
 const command = commands.addCommand({
   name: '/delay',
   handler: (req, res) => {
+    const defaultDelayTime = 4000;
+    let time = defaultDelayTime;
+    try {
+      time = parseFloat(req.text);
+    } catch (err) {
+      time = defaultDelayTime;
+    }
+
+    if (isNaN(time)) {
+      time = defaultDelayTime;
+    }
+
     setTimeout(() => {
-      const message = res.createMessage('this is a delay message!');
+      const message = res.createMessage(`This message is sent after ${time} milliseconds.`);
       res.send(message);
-    }, 15000); // eslint-disable-line no-magic-numbers
+    }, time);
   },
-  helpText: 'balba',
-  responseType: 'in_channel',
+  helpText: '/delay [milliseconds] it will delay the time then send the message.',
 });
 
 

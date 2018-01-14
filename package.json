@@ -7,8 +7,8 @@
     "node": "8"
   },
   "scripts": {
-    "start": "cd template && node ./bin/www",
-    "postinstall": "npm install ./template --no-save",
+    "start": "cd example && node ./bin/www",
+    "postinstall": "npm install ./example --no-save",
     "lint": "eslint . --ignore-pattern '**/node_modules/**' --ext .js || true"
   },
   "files": [

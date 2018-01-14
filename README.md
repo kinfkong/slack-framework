@@ -298,3 +298,7 @@ git push -u heroku master
 
 
 ## Template Project
+
+The template project is in [./template](./template).   
+Follow the [hello.js](./template/slash-commands/hello.js) or [hello-with-button.js](./template/slash-commands/hello-with-button.js) to create new commands.
+

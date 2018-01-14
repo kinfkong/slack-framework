@@ -126,11 +126,67 @@ module.exports = command;
     "is_primary_owner": true,
     "is_restricted": false,
     "is_bot": false,
-    "is_app_user": false,
+    "is_app_user": false
   }
 }
 ```
 
 *Note: the `userInfo` property exists only when `scopes: ['users:read']` is set in the command's definition.* 
 
+### Use Inactive Components (buttons, menus) and action handlers.
 
+```js
+const slack = require('../slack-framework');
+
+const commands = slack.commands;
+const actions = slack.actions;
+
+const action = actions.addAction({
+  // the name of the action, the name should be unique globally
+  name: 'test-buttons',
+  
+  // handles the action
+  handler: (req, res) => {
+    // the button/menu that clicked
+    const target = req.target;
+    
+    // create the message
+    const message = res.createMessage();
+    if (target.value === 'button1') {
+      message.addText('You are clicking button #1');
+    } else {
+      message.addText('You are clicking button #2');
+    }
+    
+    // send the message
+    res.send(message);
+  },
+});
+
+const command = commands.addCommand({
+  name: '/show-button',
+  handler: (req, res) => {
+    const message = res.createMessage('This is a message!');
+    const attachment = message.addAttachment('This is an attachment.');
+
+    // set the action handler for the whole attachment
+    attachment.setAction(action);
+    
+    // create the buttons
+    const btn1 = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
+    const btn2 = attachment.addButton({name: 'test-button', text: 'Button #2', value: 'button2'});
+    
+    // set extra styles
+    btn1.assignIn({style: 'danger'});
+    
+    // send the message
+    res.send(message);
+  },
+});
+
+module.exports = command;
+```
+
+## Example
+
+## Template

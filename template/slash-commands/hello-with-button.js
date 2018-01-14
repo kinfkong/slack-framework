@@ -14,9 +14,28 @@ const slack = require('../slack-framework');
 const commands = slack.commands;
 const actions = slack.actions;
 
+// defines an action handler
 const action = actions.addAction({
+  // the name of action handler, should be globally unique
   name: 'hello-button-handler',
+
+  // the action handler, similar to the command handler
   handler: (req, res) => {
+    // req has the following fields
+    // - target (the button that click or the menu option that selected)
+    // - team
+    // - channel
+    // - user
+    // - userInfo (only present when scopes: ['users:read'] is configured.)
+    // ---- id
+    // ---- team_id
+    // ---- name
+    // ---- real_name
+    // ---- is_admin
+    // ---- is_owner
+    // ---- is_primary_owner
+    // ---- is_bot
+    // ---- is_app_user
     let message = null;
     if (req.target.value === 'button1') {
       message = res.createMessage('Happy to hear that you like it.');
@@ -35,10 +54,17 @@ const command = commands.addCommand({
   handler: (req, res) => {
     const message = res.createMessage(`Hello ${req.user_name}!`);
     const attachment = message.addAttachment('Do you like this command? ');
+
+    // sets the action handler for the attachment
     attachment.setAction(action);
+
+    // create the buttons
     attachment.addButton({text: 'I like it!', value: 'button1', name: 'button'});
     const btn2 = attachment.addButton({text: 'I don\'t like it!', value: 'button2', name: 'button'});
+
+    // you can set other options if needed
     btn2.assignIn({style: 'danger'});
+
     res.send(message);
   },
 });

@@ -18,6 +18,7 @@ slack.set('clientSecret', config.get('SLACK_APP_CLIENT_SECRET'));
 slack.set('verificationToken', config.get('SLACK_APP_VERIFICATION_TOKEN'));
 slack.set('oauthAccessToken', config.get('SLACK_APP_OAUTH_ACCESS_TOKEN'));
 slack.set('immediateMessageTimeoutLimit', config.get('SLACK_APP_IMMEDIATE_MESSAGE_TIMEOUT_LIMIT'));
+slack.set('logLevel', 'debug');
 
 commands.loadCommands(path.join(__dirname, './slash-commands'));
 

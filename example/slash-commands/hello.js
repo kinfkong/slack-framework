@@ -5,6 +5,7 @@ const commands = slack.commands;
 const command = commands.addCommand({
   name: '/hello',
   handler: (req, res) => {
+    console.log(req);
     const message = res.createMessage(`Hello World! Are you admin? ${req.userInfo.is_admin ? 'Yes' : 'No'}`);
     message.addImage({
       title: 'sample image',

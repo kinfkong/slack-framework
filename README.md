@@ -136,7 +136,7 @@ module.exports = command;
 ### Use Inactive Components (buttons, menus) and action handlers.
 
 ```js
-const slack = require('../slack-framework');
+const slack = require('slack-framework');
 
 const commands = slack.commands;
 const actions = slack.actions;
@@ -168,7 +168,7 @@ const command = commands.addCommand({
   handler: (req, res) => {
     const message = res.createMessage('This is a message!');
     const attachment = message.addAttachment('This is an attachment.');
-
+ 
     // set the action handler for the whole attachment
     attachment.setAction(action);
     
@@ -187,6 +187,56 @@ const command = commands.addCommand({
 module.exports = command;
 ```
 
+## Message Formatting
+
+### create a message
+
+```js
+const message = res.createMessage('This is a message!');
+```
+
+### add an attachment (image, etc) to message
+```js
+const image = message.addImage({
+      title: 'sample image',
+      text: 'this is the sample image',
+      image_url: 'https://c1.staticflickr.com/6/5601/15459954198_25943c4242_z.jpg',
+      thumb_url: 'https://c1.staticflickr.com/7/6159/6207023756_bbca3b9025_m.jpg',
+});
+
+const otherAttachment = message.addAttachment('this is an attachment');
+
+```
+
+### add a button to attachment
+```js
+// for interactive components (buttons, menus), 
+// you should set the action handler to the attachment first.
+attachment.setAction(action);
+const button = attachment.addButton({name: 'test-button', text: 'Button #1', value: 'button1'});
+```
+
+### add a menu to attachment
+```js
+// for interactive components (buttons, menus), 
+// you should set the action handler to the attachment first.
+attachment.setAction(action);
+const menu = attachment.addMenu({
+  name: 'test-menu', 
+  text: 'which to select', 
+  options: [{
+    text: 'option #1',
+    value: 'option1'
+  }, {
+    text: 'option #2',
+    value: 'option2'
+  }]
+});
+```
+### hacking
+
+
 ## Example
+
 
 ## Template

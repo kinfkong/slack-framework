@@ -1,4 +1,13 @@
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
 
+/**
+ * This is the configuration for the aplication.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
 /* eslint-disable no-magic-numbers */
 module.exports = {
   PORT: process.env.PORT || 3000,

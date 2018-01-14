@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 TopCoder, Inc. All rights reserved.
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
  */
 
 /**

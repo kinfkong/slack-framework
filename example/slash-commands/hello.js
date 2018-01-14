@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
+
+/**
+ * This module is the demo command for showing the image message.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
+
 const slack = require('../slack-framework');
 
 const commands = slack.commands;
@@ -5,7 +16,6 @@ const commands = slack.commands;
 const command = commands.addCommand({
   name: '/hello',
   handler: (req, res) => {
-    console.log(req);
     const message = res.createMessage(`Hello World! Are you admin? ${req.userInfo.is_admin ? 'Yes' : 'No'}`);
     message.addImage({
       title: 'sample image',

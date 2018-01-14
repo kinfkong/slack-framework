@@ -249,7 +249,7 @@ button.assignIn({style: 'danger'});
 
 ## Example Project
 
-NOTE: all the following commands should be run in the root folder of the submission, NOT in the `example` folder.
+*NOTE: all the following commands should be run in the root folder of the submission, NOT in the `example` folder.* 
 
 ### run locally
 ```bash

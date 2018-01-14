@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
+
+/**
+ * This module is the definition of the express application.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
 const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');

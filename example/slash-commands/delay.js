@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
+
+/**
+ * This module is the demo command to show a delay message.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
+
 const slack = require('../slack-framework');
 
 const commands = slack.commands;

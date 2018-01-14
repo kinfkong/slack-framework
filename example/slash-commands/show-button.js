@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
+
+/**
+ * This module is the demo command to show a interactive components(menu, button) in the message.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
 const slack = require('../slack-framework');
 
 const commands = slack.commands;

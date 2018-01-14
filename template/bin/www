@@ -1,0 +1,94 @@
+#!/usr/bin/env node
+/*
+ * Copyright (c) 2018 TopCoder, Inc. All rights reserved.
+ */
+
+/**
+ * This is the bootstrap file for the express application.
+ *
+ * @author TCSCODER
+ * @version 1.0
+ */
+
+/**
+ * Module dependencies.
+ */
+const http = require('http');
+const _ = require('lodash');
+const config = require('config');
+const logger = require('../common/logger');
+const app = require('../app');
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ *
+ * @param {String|Number} val the port value
+ * @returns {Number|Boolean|String} the port or false
+ */
+const normalizePort = (val) => {
+  const result = parseInt(val, 10);
+  if (isNaN(result)) {
+    return val;
+  }
+
+  if (result >= 0) {
+    return result;
+  }
+  return false;
+};
+
+/**
+ * Get port from environment and store in Express.
+ */
+const port = normalizePort(config.get('PORT'));
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+const server = http.createServer(app);
+
+
+/**
+ * Event listener for HTTP server "error" event.
+ * @param {Error} error the error
+ */
+const onError = (error) => {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = _.isString(port) ? `Pipe ${port}` : `Port ${port}`;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      logger.error(`${bind} requires elevated privileges`);
+      process.exit(1); // eslint-disable-line no-process-exit
+      break;
+    case 'EADDRINUSE':
+      logger.error(`${bind} is already in use`);
+      process.exit(1); // eslint-disable-line no-process-exit
+      break;
+    default:
+      throw error;
+  }
+};
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+const onListening = () => {
+  const addr = server.address();
+  const bind = _.isString(addr) ? `pipe ${addr}` : `port ${addr.port}`;
+  logger.debug(`Listening on ${bind}`);
+};
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+

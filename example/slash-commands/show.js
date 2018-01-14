@@ -126,7 +126,9 @@ const command = commands.addCommand({
       roleHandler(req, res);
     }
   },
+
   scopes: ['users:read'],
+
   helpHandler: (req, res) => {
     const message = res.createMessage();
     const attachment = message.addAttachment('This is the options for /show command');
@@ -148,6 +150,7 @@ const command = commands.addCommand({
         value: 'shows the role',
       },
     ]});
+
     res.send(message);
   },
 });

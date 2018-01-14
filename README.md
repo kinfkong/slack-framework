@@ -271,16 +271,20 @@ npm start
 
 ### deploy to heroku
 ```bash
+git init
+git add .
+git commit -am "init"
 
 heroku login
 heroku create
+
+git push -u heroku master
 
 heroku config:set SLACK_APP_CLIENT_ID='****'
 heroku config:set SLACK_APP_CLIENT_SECRET='*****',
 heroku config:set SLACK_APP_VERIFICATION_TOKEN='*****'
 heroku config:set SLACK_APP_OAUTH_ACCESS_TOKEN='******'
 
-git push -u heroku master
 ```
 
 ### config the following commands in slack app:

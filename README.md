@@ -91,7 +91,12 @@ module.exports = command;
 |handler|Function|the handler of the command|required|
 |helpText|String|the text will display if typing `/<command-name> help`|optional|
 |helpHandler|Function|instead of using `helpText`, helpHanlder can implement a complicated help message|optional|
-|scopes|Array|currently supports: `['users:read']` only, if this scope is set, if will retrieve the `userInfo`|optional|
+|scopes|Array|currently supports: `['users:read']` only, if this scope is set, if will retrieve the `userInfo` (with `is_admin`, `is_owner` inside)|optional|
 |responseType|String| `in_channel` or `ephemeral`. `ephemeral` message only visible by the user, otherwise visible to users in the channel|optional, default: `ephemeral`|
  
+ #### Slash Command Handler request
+ The command handler accepts a `req` parameter, that `req` parameter contains the properties: 
+|Property|type|Description|  
+|:-------|:--:|:----------|  
+|a|b|c|
  
